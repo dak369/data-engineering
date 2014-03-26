@@ -6,7 +6,7 @@ class DatasetsController < ApplicationController
   end
 
   def create
-    if Dataset.upload(current_user, params[:dataset][:file])
+    if params.has_key?(:dataset) && Dataset.upload(current_user, params[:dataset][:file])
       redirect_to datasets_path, notice: 'Dataset was successfully created.'
     else
       redirect_to datasets_path, alert: 'Unable to upload Dataset.'
