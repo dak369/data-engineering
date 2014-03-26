@@ -1,7 +1,7 @@
 class Merchant < ActiveRecord::Base
 
-  belongs_to :user
-  validates :user, presence: true
+  belongs_to :dataset
+  validates :dataset, presence: true
 
   validates :name, presence: true
   validates :address, presence: true
