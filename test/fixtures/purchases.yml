@@ -1,15 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  dataset_id: 
-  purchaser_id: 
-  merchant_id: 
-  item_id: 
-  count: 1
+  purchaser: one
+  item: one
+  count: 2
 
 two:
-  dataset_id: 
-  purchaser_id: 
-  merchant_id: 
-  item_id: 
-  count: 1
+  purchaser: one
+  item: two
+  count: 3

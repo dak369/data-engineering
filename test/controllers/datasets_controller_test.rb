@@ -2,46 +2,28 @@ require 'test_helper'
 
 class DatasetsControllerTest < ActionController::TestCase
   setup do
-    @dataset = datasets(:one)
+    sign_in users(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
+
     assert_response :success
     assert_not_nil assigns(:datasets)
+    assert_not_nil assigns(:dataset)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create dataset" do
+  test 'should create dataset' do
     assert_difference('Dataset.count') do
-      post :create, dataset: { User_id: @dataset.User_id }
+      post :create, dataset: { file: upload_file }
     end
 
-    assert_redirected_to dataset_path(assigns(:dataset))
+    assert_redirected_to datasets_path
   end
 
-  test "should show dataset" do
-    get :show, id: @dataset
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @dataset
-    assert_response :success
-  end
-
-  test "should update dataset" do
-    patch :update, id: @dataset, dataset: { User_id: @dataset.User_id }
-    assert_redirected_to dataset_path(assigns(:dataset))
-  end
-
-  test "should destroy dataset" do
+  test 'should destroy dataset' do
     assert_difference('Dataset.count', -1) do
-      delete :destroy, id: @dataset
+      delete :destroy, id: datasets(:one)
     end
 
     assert_redirected_to datasets_path

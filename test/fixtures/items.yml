@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  description: MyString
+  merchant: one
+  description: Item One
   price: 9.99
 
 two:
-  user_id: 
-  description: MyString
-  price: 9.99
+  merchant: one
+  description: Item Two
+  price: 19.99

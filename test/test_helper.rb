@@ -12,4 +12,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def upload_file
+    ActionDispatch::Http::UploadedFile.new(tempfile: File.new(File.join(Rails.root, 'example_input.tab')), filename: 'test_file')
+  end
+end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
 end

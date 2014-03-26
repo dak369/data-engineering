@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  name: MyString
-  address: MyString
+  dataset: one
+  name: Merchant One
+  address: 123 Anywhere
 
 two:
-  user_id: 
-  name: MyString
-  address: MyString
+  dataset: one
+  name: Merchant Two
+  address: 678 Somewhere

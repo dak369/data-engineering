@@ -7,7 +7,8 @@ class Purchaser < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: :dataset }
 
+  # Compute the gross revenue of this Purchaser
   def gross_revenue
-    purchases.sum(&:gross_revenue)
+    purchases.to_a.sum(&:gross_revenue)
   end
 end

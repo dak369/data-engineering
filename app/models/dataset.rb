@@ -10,6 +10,7 @@ class Dataset < ActiveRecord::Base
   has_many :merchants
   has_many :purchasers
 
+  # Create a Dataset by reading from a tab-delimited file
   def self.upload(user, uploaded_io)
     dataset = self.new({user: user, name: uploaded_io.original_filename})
     dataset.save!
@@ -35,7 +36,8 @@ class Dataset < ActiveRecord::Base
     false
   end
 
+  # Return the gross revenue of this Dataset
   def gross_revenue
-    purchasers.sum(&:gross_revenue)
+    purchasers.to_a.sum(&:gross_revenue)
   end
 end
