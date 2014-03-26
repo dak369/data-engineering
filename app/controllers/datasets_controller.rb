@@ -14,8 +14,7 @@ class DatasetsController < ApplicationController
   end
 
   def destroy
-    @dataset = Dataset.find(params[:id])
-    @dataset.destroy
+    Dataset.find(params[:id]).destroy
 
     redirect_to datasets_path
   end

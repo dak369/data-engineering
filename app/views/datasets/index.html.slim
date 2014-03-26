@@ -1,6 +1,7 @@
 .panel.panel-primary
   .panel-heading
     h1.panel-title Datasets
+
   .panel-body
     = form_for @dataset, html: { class: 'form-inline', role: 'form' } do |f|
       .form-group
@@ -22,7 +23,7 @@
       - @datasets.each do |dataset|
         tr
           td = dataset.name
-          td = dataset.user.email if dataset.user
+          td = dataset.user.email
           td = dataset.merchants.size
           td = dataset.purchasers.size
           td = number_to_currency(dataset.gross_revenue)

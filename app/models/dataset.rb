@@ -30,7 +30,9 @@ class Dataset < ActiveRecord::Base
       purchaser.purchases.create!(item: item, count: purchase_count)
     end
 
-    true
+    dataset
+  rescue
+    false
   end
 
   def gross_revenue
