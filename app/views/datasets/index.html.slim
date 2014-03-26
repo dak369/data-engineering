@@ -6,7 +6,6 @@ table
       th Name
       th User
       th Merchants
-      th Items
       th Purchasers
       th Purchases
       th Gross Revenue
@@ -16,9 +15,9 @@ table
       tr
         td = dataset.name
         td = dataset.user.email if dataset.user
-        td = 1
-        td = 1
-        td = 1
+        td = dataset.merchants.size
+        td = dataset.purchasers.size
+        td = dataset.purchases.size
         /td = link_to 'Show', dataset
         /td = link_to 'Edit', edit_dataset_path(dataset)
         /td = link_to 'Destroy', dataset, data: {:confirm => 'Are you sure?'}, :method => :delete
