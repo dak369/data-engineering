@@ -26,6 +26,7 @@ html lang="en"
       - if user_signed_in?
         .collapse.navbar-collapse.navbar-ex1-collapse
           ul.nav.navbar-nav.navbar-right
+            p = current_user.email
             li = link_to 'Sign Out', destroy_user_session_path, method: :delete
 
     .container
@@ -45,4 +46,4 @@ html lang="en"
                 li= link_to "Link 3", "/path3"
 
       footer
-        p Implemented by David King (Github: dak369)
+        p Implemented by David King (github: dak369)

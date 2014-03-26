@@ -1,7 +1,9 @@
 DataEngineering::Application.routes.draw do
-  root to: redirect('/users/sign_in')
+
+  root to: "datasets#index"
 
   devise_for :users
+  resources :datasets, only: [:index, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
