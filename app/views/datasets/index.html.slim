@@ -1,42 +1,29 @@
 h1 Datasets
 
-table
-  thead
-    tr
-      th Name
-      th User
-      th Merchants
-      th Purchasers
-      th Purchases
-      th Gross Revenue
-
-  tbody
-    - @datasets.each do |dataset|
+- if !@datasets.empty?
+  table
+    thead
       tr
-        td = dataset.name
-        td = dataset.user.email if dataset.user
-        td = dataset.merchants.size
-        td = dataset.purchasers.size
-        td = dataset.purchases.size
-        /td = link_to 'Show', dataset
-        /td = link_to 'Edit', edit_dataset_path(dataset)
-        /td = link_to 'Destroy', dataset, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Name
+        th User
+        th Merchants
+        th Purchasers
+        th Gross Revenue
+        th Action
 
-h2 Upload Dataset
+    tbody
+      - @datasets.each do |dataset|
+        tr
+          td = dataset.name
+          td = dataset.user.email if dataset.user
+          td = dataset.merchants.size
+          td = dataset.purchasers.size
+          td = number_to_currency(dataset.gross_revenue)
+          td = link_to 'Destroy', dataset, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 = form_for @dataset do |f|
-  - if @dataset.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@dataset.errors.count, "error")} prohibited this dataset from being saved:"
-      ul
-        - @dataset.errors.full_messages.each do |message|
-          li = message
-
   .field
     = f.label :file
     = f.file_field :file
 
-  .actions = f.submit 'Save'
-
-
-/= link_to 'New Dataset', new_dataset_path
+  .actions = f.submit 'Upload'

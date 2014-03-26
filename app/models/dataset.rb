@@ -22,13 +22,18 @@ class Dataset < ActiveRecord::Base
       merchant_address = row[4]
       merchant_name = row[5]
 
-      purchaser = dataset.purchasers.find_by_name(purchaser_name) || dataset.purchasers.create!(name: purchaser_name)
       merchant = dataset.merchants.find_by_name(merchant_name) || dataset.merchants.create!(name: merchant_name, address: merchant_address)
-      item = dataset.items.find_by_description(item_description) || dataset.items.create!(description: item_description, price: item_price)
+      purchaser = dataset.purchasers.find_by_name(purchaser_name) || dataset.purchasers.create!(name: purchaser_name)
 
-      dataset.purchases.create!(purchaser: purchaser, merchant: merchant, item: item, count: purchase_count)
+      item = merchant.items.find_by_description(item_description) || merchant.items.create!(description: item_description, price: item_price)
+
+      purchaser.purchases.create!(item: item, count: purchase_count)
     end
 
     true
+  end
+
+  def gross_revenue
+    purchasers.sum(&:gross_revenue)
   end
 end

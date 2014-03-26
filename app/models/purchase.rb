@@ -7,4 +7,8 @@ class Purchase < ActiveRecord::Base
   validates :item, presence: true
 
   validates :count, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
+  def gross_revenue
+    item.price * count
+  end
 end

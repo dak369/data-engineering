@@ -6,4 +6,8 @@ class Purchaser < ActiveRecord::Base
   has_many :purchases
 
   validates :name, presence: true, uniqueness: { scope: :dataset }
+
+  def gross_revenue
+    purchases.sum(&:gross_revenue)
+  end
 end

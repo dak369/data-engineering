@@ -1,7 +1,5 @@
 class DatasetsController < ApplicationController
 
-  before_action :set_dataset, only: [:destroy]
-
   def index
     @datasets = Dataset.all
     @dataset = Dataset.new
