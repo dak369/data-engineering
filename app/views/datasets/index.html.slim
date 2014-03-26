@@ -1,7 +1,14 @@
-h1 Datasets
+.panel.panel-primary
+  .panel-heading
+    h1.panel-title Datasets
+  .panel-body
+    = form_for @dataset, html: { class: 'form-inline', role: 'form' } do |f|
+      .form-group
+        = f.label(:file, class: 'sr-only')
+        = f.file_field(:file, class: 'form-control')
+      = f.submit 'Upload', class: 'btn btn-primary btn-sm'
 
-- if !@datasets.empty?
-  table
+  table.table.table-striped.table-bordered.table-hover
     thead
       tr
         th Name
@@ -20,10 +27,3 @@ h1 Datasets
           td = dataset.purchasers.size
           td = number_to_currency(dataset.gross_revenue)
           td = link_to 'Destroy', dataset, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-= form_for @dataset do |f|
-  .field
-    = f.label :file
-    = f.file_field :file
-
-  .actions = f.submit 'Upload'
